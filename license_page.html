@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Issued Licenses</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Your Licenses</h2>
+        <div id="licenses"></div>
+    </div>
+    <script>
+        // Fetch and display licenses
+        fetch('get_licenses.php')
+            .then(response => response.json())
+            .then(data => {
+                let licenses = document.getElementById('licenses');
+                data.forEach(license => {
+                    let licenseDiv = document.createElement('div');
+                    licenseDiv.classList.add('license');
+                    licenseDiv.innerHTML = `
+                        <h3>License for ${license.event_name}</h3>
+                        <p>Issued on: ${license.issue_date}</p>
+                        <p>Expires on: ${license.expiry_date}</p>
+                        <button onclick="downloadLicense(${license.id})" class="btn btn-primary">Download</button>
+                    `;
+                    licenses.appendChild(licenseDiv);
+                });
+            });
+
+        function downloadLicense(id) {
+            window.location.href = 'download_license.php?id=' + id;
+        }
+    </script>
+</body>
+</html>
