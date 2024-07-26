@@ -5,17 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Splash Screen</title>
   <style>
-    /* Include your provided CSS here */
+    /* Basic styling to ensure visibility */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0; /* Light gray background */
+    }
+
     #custor-splash-screen {
       display: block;
       position: absolute;
       top: 0;
-      left: 10px;
+      left: 0;
       right: 0;
       bottom: 0;
-      /* background-color: white; */
+      background-color: white;
       z-index: 99999;
       pointer-events: none;
+      border: 2px solid black; /* Add border to visualize */
     }
 
     #custor-splash-screen .center {
@@ -33,7 +46,7 @@
     }
 
     #custor-splash-screen .logo img {
-      /*filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2))*/
+      width: 100%; /* Ensure the image fits the logo container */
     }
 
     #custor-splash-screen .spinner-wrapper {
@@ -189,7 +202,7 @@
     </div>
   </div>
   <script>
-    // You can add JavaScript to hide the splash screen after a certain time or event
+    // JavaScript to hide the splash screen after a certain time
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('custor-splash-screen').style.display = 'none';
