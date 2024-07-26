@@ -4,27 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>License Request Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Request a Bazaar/Exhibition License - Oromia Trade Bureau</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin-top: 50px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Request a Bazaar/Exhibition License</h2>
-        <form action="submit_request.php" method="POST">
-            <div class="form-group">
-                <label for="eventName">Event Name:</label>
-                <input type="text" class="form-control" id="eventName" name="eventName" required>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Oromia Trade Bureau</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h4><i class="fas fa-file-alt"></i> Request a Bazaar/Exhibition License</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="submit_request.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="eventName">Event Name:</label>
+                                <input type="text" class="form-control" id="eventName" name="eventName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <input type="text" class="form-control" id="address" name="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="organizerName">Organizer Name:</label>
+                                <input type="text" class="form-control" id="organizerName" name="organizerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventDetails">Event Details:</label>
+                                <textarea class="form-control" id="eventDetails" name="eventDetails" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="proposal">Proposal (PDF):</label>
+                                <input type="file" class="form-control-file" id="proposal" name="proposal" accept=".pdf" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="businessLicense">Renewed Business License (PDF):</label>
+                                <input type="file" class="form-control-file" id="businessLicense" name="businessLicense" accept=".pdf" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalDocument">Additional Document (if any, PDF):</label>
+                                <input type="file" class="form-control-file" id="additionalDocument" name="additionalDocument" accept=".pdf">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="organizerName">Organizer Name:</label>
-                <input type="text" class="form-control" id="organizerName" name="organizerName" required>
-            </div>
-            <div class="form-group">
-                <label for="eventDetails">Event Details:</label>
-                <textarea class="form-control" id="eventDetails" name="eventDetails" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Request</button>
-        </form>
+        </div>
     </div>
+
+    <footer class="footer bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="text-center p-3">
+                © 2024 Oromia Trade Bureau
+            </div>
+        </div>
+    </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
