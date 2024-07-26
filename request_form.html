@@ -25,6 +25,83 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Data for the dropdowns
+            const regions = {
+                "Region1": {
+                    "Zone1": {
+                        "Woreda1": ["Kebele1", "Kebele2"],
+                        "Woreda2": ["Kebele3", "Kebele4"]
+                    },
+                    "Zone2": {
+                        "Woreda3": ["Kebele5", "Kebele6"]
+                    }
+                },
+                "Region2": {
+                    "Zone3": {
+                        "Woreda4": ["Kebele7", "Kebele8"]
+                    }
+                }
+            };
+
+            const regionSelect = document.getElementById('region');
+            const zoneSelect = document.getElementById('zone');
+            const woredaSelect = document.getElementById('woreda');
+            const kebeleSelect = document.getElementById('kebele');
+
+            // Populate regions
+            for (const region in regions) {
+                let option = document.createElement('option');
+                option.value = region;
+                option.text = region;
+                regionSelect.add(option);
+            }
+
+            // Event listener for region change
+            regionSelect.addEventListener('change', function() {
+                zoneSelect.length = 1; // Clear out existing options, keep first placeholder option
+                woredaSelect.length = 1;
+                kebeleSelect.length = 1;
+                if (this.selectedIndex < 1) return; // No selection
+
+                for (const zone in regions[this.value]) {
+                    let option = document.createElement('option');
+                    option.value = zone;
+                    option.text = zone;
+                    zoneSelect.add(option);
+                }
+            });
+
+            // Event listener for zone change
+            zoneSelect.addEventListener('change', function() {
+                woredaSelect.length = 1;
+                kebeleSelect.length = 1;
+                if (this.selectedIndex < 1) return; // No selection
+
+                for (const woreda in regions[regionSelect.value][this.value]) {
+                    let option = document.createElement('option');
+                    option.value = woreda;
+                    option.text = woreda;
+                    woredaSelect.add(option);
+                }
+            });
+
+            // Event listener for woreda change
+            woredaSelect.addEventListener('change', function() {
+                kebeleSelect.length = 1;
+                if (this.selectedIndex < 1) return; // No selection
+
+                let kebeles = regions[regionSelect.value][zoneSelect.value][this.value];
+                for (const kebele of kebeles) {
+                    let option = document.createElement('option');
+                    option.value = kebele;
+                    option.text = kebele;
+                    kebeleSelect.add(option);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,8 +138,28 @@
                                 <input type="text" class="form-control" id="eventName" name="eventName" required>
                             </div>
                             <div class="form-group">
-                                <label for="address">Address:</label>
-                                <input type="text" class="form-control" id="address" name="address" required>
+                                <label for="region">Region:</label>
+                                <select class="form-control" id="region" name="region" required>
+                                    <option value="">Select Region</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="zone">Zone/Town:</label>
+                                <select class="form-control" id="zone" name="zone" required>
+                                    <option value="">Select Zone/Town</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="woreda">Woreda:</label>
+                                <select class="form-control" id="woreda" name="woreda" required>
+                                    <option value="">Select Woreda</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="kebele">Kebele:</label>
+                                <select class="form-control" id="kebele" name="kebele" required>
+                                    <option value="">Select Kebele</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="organizerName">Organizer Name:</label>
