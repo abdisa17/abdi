@@ -15,6 +15,7 @@ if ($conn->connect_error) {
 
 // Form data
 $eventName = $_POST['eventName'];
+$eventType = $_POST['eventType'];
 $region = $_POST['region'];
 $zone = $_POST['zone'];
 $woreda = $_POST['woreda'];
@@ -52,8 +53,8 @@ if ($result->num_rows > 0) {
     }
 
     // Insert request into proposals table
-    $sql = "INSERT INTO proposals (organizer_id, event_name, region, zone, woreda, kebele, application_date, event_details, proposal, business_license, additional_document, status) 
-            VALUES ('$organizerId', '$eventName', '$region', '$zone', '$woreda', '$kebele', '$applicationDate', '$eventDetails', '$proposal', '$businessLicense', '$additionalDocument', 'pending')";
+    $sql = "INSERT INTO proposals (organizer_id, event_name, event_type, region, zone, woreda, kebele, application_date, event_details, proposal, business_license, additional_document, status) 
+            VALUES ('$organizerId', '$eventName', '$eventType', '$region', '$zone', '$woreda', '$kebele', '$applicationDate', '$eventDetails', '$proposal', '$businessLicense', '$additionalDocument', 'pending')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Request submitted successfully!";
