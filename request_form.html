@@ -8,7 +8,7 @@
     <title>Request a Bazaar/Exhibition License - Oromia Trade Bureau</title>
     <style>
         body {
-            background-color: #f8f8fa;
+            background-color: #f8f9fa;
         }
         .card {
             margin-top: 50px;
@@ -181,6 +181,7 @@
                                 <label for="additionalDocument">Additional Document (if any, PDF):</label>
                                 <input type="file" class="form-control-file" id="additionalDocument" name="additionalDocument" accept=".pdf">
                             </div>
+                            <input type="hidden" name="applicationDate" id="applicationDate">
                             <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
                         </form>
                     </div>
@@ -197,6 +198,10 @@
         </div>
     </footer>
 
+    <script>
+        // Set the application date to the current date
+        document.getElementById('applicationDate').value = new Date().toISOString().split('T')[0];
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
