@@ -1,75 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Oromia Trade Bureau Licensing System</title>
-    <style>
-        .navbar {
-            background-color: #001f3f;
-        }
-        .navbar-brand, .nav-link {
-            color: #ffffff !important;
-        }
-        .jumbotron {
-            background-color: green;
-            color: white;
-        }
-        .container-description {
-            margin-top: 50px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Splash Screen</title>
+  <style>
+    /* Include your provided CSS here */
+    #custor-splash-screen {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 10px;
+      right: 0;
+      bottom: 0;
+      /* background-color: white; */
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    #custor-splash-screen .center {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #custor-splash-screen .logo {
+      width: 128px;
+      margin: 0 auto;
+      background-color: turquoise;
+    }
+
+    #custor-splash-screen .logo img {
+      /*filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2))*/
+    }
+
+    #custor-splash-screen .spinner-wrapper {
+      display: block;
+      position: relative;
+      width: 100%;
+      min-height: 100px;
+      height: 100px;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner {
+      position: absolute;
+      overflow: hidden;
+      left: 50%;
+      margin-left: -50px;
+      animation: outer-rotate 2.91667s linear infinite;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .gap {
+      position: absolute;
+      left: 49px;
+      right: 49px;
+      top: 0;
+      bottom: 0;
+      border-top: 10px solid;
+      box-sizing: border-box;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .left,
+    #custor-splash-screen .spinner-wrapper .spinner .inner .right {
+      position: absolute;
+      top: 0;
+      height: 100px;
+      width: 50px;
+      overflow: hidden;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .left .half-circle,
+    #custor-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      box-sizing: border-box;
+      border: 10px solid #00796b;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .left {
+      left: 0;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .left .half-circle {
+      left: 0;
+      border-right-color: transparent;
+      animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+      -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .right {
+      right: 0;
+    }
+
+    #custor-splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+      right: 0;
+      border-left-color: transparent;
+      animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+      -webkit-animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    @keyframes outer-rotate {
+      0% {
+        transform: rotate(0deg) scale(0.5);
+      }
+      100% {
+        transform: rotate(360deg) scale(0.5);
+      }
+    }
+
+    @keyframes left-wobble {
+      0%, 100% {
+        transform: rotate(130deg);
+      }
+      50% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    @keyframes right-wobble {
+      0%, 100% {
+        transform: rotate(-130deg);
+      }
+      50% {
+        transform: rotate(5deg);
+      }
+    }
+
+    @keyframes sporadic-rotate {
+      12.5% {
+        transform: rotate(135deg);
+      }
+      25% {
+        transform: rotate(270deg);
+      }
+      37.5% {
+        transform: rotate(405deg);
+      }
+      50% {
+        transform: rotate(540deg);
+      }
+      62.5% {
+        transform: rotate(675deg);
+      }
+      75% {
+        transform: rotate(810deg);
+      }
+      87.5% {
+        transform: rotate(945deg);
+      }
+      100% {
+        transform: rotate(1080deg);
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">Oromia Trade Bureau</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.html">Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container-description">
-        <div class="jumbotron">
-            <h1 class="display-4">Welcome to Oromia Trade Bureau Licensing System</h1>
-            <p class="lead">An easy way to obtain a temporary license for bazaars and exhibitions.</p>
-            <hr class="my-4">
-            <p>Please log in or register to apply for a license.</p>
-        </div>
-
-        <div class="requirements">
-            <h2>Requirements for Applying for a Bazaar/Exhibition License</h2>
-            <ul class="list-group">
-                <li class="list-group-item">1. Event Name</li>
-                <li class="list-group-item">2. Address of the Event</li>
-                <li class="list-group-item">3. Organizer Name</li>
-                <li class="list-group-item">4. Detailed Event Proposal (PDF)</li>
-                <li class="list-group-item">5. Renewed Business License (PDF)</li>
-                <li class="list-group-item">6. Additional Documents (if any, PDF)</li>
-            </ul>
-        </div>
-    </div>
-
-    <footer class="footer bg-light text-center text-lg-start mt-5">
-        <div class="container p-4">
-            <div class="text-center p-3">
-                © 2024 Oromia Trade Bureau
+  <div id="custor-splash-screen">
+    <div class="center">
+      <div class="logo">
+        <img src="path-to-your-logo.png" alt="Logo">
+      </div>
+      <div class="spinner-wrapper">
+        <div class="spinner">
+          <div class="inner">
+            <div class="gap"></div>
+            <div class="left">
+              <div class="half-circle"></div>
             </div>
+            <div class="right">
+              <div class="half-circle"></div>
+            </div>
+          </div>
         </div>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      </div>
+    </div>
+  </div>
+  <script>
+    // You can add JavaScript to hide the splash screen after a certain time or event
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('custor-splash-screen').style.display = 'none';
+      }, 3000); // Adjust the timeout as needed
+    });
+  </script>
 </body>
 </html>
